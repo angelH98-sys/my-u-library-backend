@@ -1,0 +1,31 @@
+{
+  "name": "my-u-library-backend",
+  "version": "1.0.0",
+  "description": "Backend app for My U Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelH98-sys/my-u-library-backend.git"
+  },
+  "keywords": [
+    "Express",
+    "NodeJs"
+  ],
+  "author": "Angel Hernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelH98-sys/my-u-library-backend/issues"
+  },
+  "homepage": "https://github.com/angelH98-sys/my-u-library-backend#readme",
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.9.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.8.0",
+    "generate-password": "^1.7.0",
+    "mongoose": "^7.1.1"
+  }
+}
