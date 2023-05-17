@@ -4,6 +4,7 @@ const User = require("../../schema/user/User.Schema");
 const {
   unHandledExceptionResponse,
   getRecordsResponse,
+  getRecordsResponseWithMetadata,
 } = require("../../response/general/general.response");
 const { createUserInFirebase } = require("../../client/firebase.client");
 const {
@@ -62,7 +63,31 @@ const getRoleFromLoggedUser = async (req = request, res = response) => {
   }
 };
 
+const getAllUsersPaginated = async (req = request, res = response) => {
+  try {
+    const { limit = 10, skip = 0 } = req.query;
+
+    const paginatedUsers = await User.find().setOptions({ limit, skip });
+    const totalUsers = await User.count();
+
+    const response = getRecordsResponseWithMetadata(
+      paginatedUsers,
+      limit,
+      skip,
+      totalUsers
+    );
+
+    return res.status(response.status).json(response);
+  } catch (unhandledError) {
+    console.log(unhandledError);
+
+    const response = unHandledExceptionResponse();
+    return res.status(response.status).json(response);
+  }
+};
+
 module.exports = {
   createUser,
   getRoleFromLoggedUser,
+  getAllUsersPaginated,
 };

@@ -41,6 +41,23 @@ const getRecordsResponse = (records) => {
   return response;
 };
 
+const getRecordsResponseWithMetadata = (records, limit, skip, total) => {
+  const response = new MyULibraryResponse();
+  response.status = 200;
+
+  if (Array.isArray(records)) {
+    records.length > 0
+      ? records.forEach((record) => response.addRecord(record))
+      : (response.data = { records: [] });
+  } else {
+    response.addRecord(records);
+  }
+
+  response.setMetadata(limit, skip, total);
+
+  return response;
+};
+
 const unauthorizedResponse = () => {
   const response = new MyULibraryResponse();
   response.status = 403;
@@ -52,5 +69,6 @@ module.exports = {
   getSchemaErrorResponse,
   unHandledExceptionResponse,
   getRecordsResponse,
+  getRecordsResponseWithMetadata,
   unauthorizedResponse,
 };

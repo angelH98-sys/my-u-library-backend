@@ -11,11 +11,18 @@ class Error {
 }
 
 class Metadata {
-  page;
-  size;
-  per_page;
-  page_count;
+  page_size;
   total_count;
+  left;
+
+  constructor(limit, skip, total) {
+    this.total_count = total;
+    this.page_size = limit;
+
+    const left = total - skip - limit;
+
+    this.left = left <= 0 ? 0 : left;
+  }
 }
 
 class Data {
@@ -54,6 +61,12 @@ class MyULibraryResponse {
     } else {
       this.errors = [newError];
     }
+  };
+
+  setMetadata = (limit, skip, total) => {
+    !!!this.data && (this.data = new Data());
+    !!!this.data._metadata &&
+      (this.data._metadata = new Metadata(limit, skip, total));
   };
 }
 

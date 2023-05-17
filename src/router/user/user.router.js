@@ -2,6 +2,7 @@ const { Router } = require("express");
 const {
   createUser,
   getRoleFromLoggedUser,
+  getAllUsersPaginated,
 } = require("../../controller/user/user.controller");
 const {
   checkUserSchemaValidators,
@@ -20,6 +21,12 @@ UserRouter.post(
 );
 
 UserRouter.get("/role", [isUserAuthenticated], getRoleFromLoggedUser);
+
+UserRouter.get(
+  "/",
+  [isUserAuthenticated, checkLoggedUserIsLibrarian],
+  getAllUsersPaginated
+);
 
 module.exports = {
   UserRouter,
