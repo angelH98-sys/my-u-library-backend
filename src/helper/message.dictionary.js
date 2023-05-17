@@ -19,6 +19,14 @@ const MessageDictionary = {
         UNAVAILABLE: "error.user.email.unavailable",
       },
     },
+    BOOK: {
+      STOCK: {
+        MINIMUM: "error.book.stock.minimum",
+      },
+      YEAR: {
+        INVALID: "error.book.year.invalid",
+      },
+    },
     UNHANDLED: "error.unhandled",
     UNAUTHORIZED: "error.unauthorized",
   },

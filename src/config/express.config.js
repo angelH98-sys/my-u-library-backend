@@ -3,6 +3,9 @@ const cors = require("cors");
 
 const { dbConnection } = require("./database.config");
 const { UserRouter } = require("../router/user/user.router");
+const { BookRouter } = require("../router/book/book.router");
+const { AuthorRouter } = require("../router/author/author.router");
+const { GenreRouter } = require("../router/genre/genre.router");
 
 class ExpressServer {
   constructor() {
@@ -25,6 +28,9 @@ class ExpressServer {
 
   routes() {
     this.app.use(process.env.PATH_USERS, UserRouter);
+    this.app.use(process.env.PATH_BOOKS, BookRouter);
+    this.app.use(process.env.PATH_AUTHORS, AuthorRouter);
+    this.app.use(process.env.PATH_GENRES, GenreRouter);
   }
 
   listen() {
