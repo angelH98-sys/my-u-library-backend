@@ -1,4 +1,7 @@
 const { MyULibraryResponse } = require("../../helper/Response");
+const {
+  MessageDictionary: { ERROR },
+} = require("../../helper/message.dictionary");
 
 const SOURCE_LOCAL = process.env.SOURCE_LOCAL;
 
@@ -38,8 +41,16 @@ const getRecordsResponse = (records) => {
   return response;
 };
 
+const unauthorizedResponse = () => {
+  const response = new MyULibraryResponse();
+  response.status = 403;
+  response.addError(SOURCE_LOCAL, ERROR.UNAUTHORIZED);
+  return response;
+};
+
 module.exports = {
   getSchemaErrorResponse,
   unHandledExceptionResponse,
   getRecordsResponse,
+  unauthorizedResponse,
 };

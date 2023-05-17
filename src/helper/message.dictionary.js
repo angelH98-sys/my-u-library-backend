@@ -20,6 +20,7 @@ const MessageDictionary = {
       },
     },
     UNHANDLED: "error.unhandled",
+    UNAUTHORIZED: "error.unauthorized",
   },
 };
 

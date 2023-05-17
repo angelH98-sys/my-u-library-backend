@@ -9,6 +9,7 @@ const { createUserInFirebase } = require("../../client/firebase.client");
 const {
   setAuditorySchemaCreationOptions,
 } = require("../../helper/auditory.schema.options");
+const { userStore } = require("../../config/user.store");
 
 const createUser = async (req = request, res = response) => {
   try {
@@ -45,6 +46,23 @@ const createUser = async (req = request, res = response) => {
   }
 };
 
+const getRoleFromLoggedUser = async (req = request, res = response) => {
+  const { uid } = userStore.getState();
+  try {
+    const { role } = await User.findOne({ firebaseId: uid }).select("role");
+
+    const response = getRecordsResponse(role);
+
+    return res.status(response.status).json(response);
+  } catch (error) {
+    console.log(unhandledError);
+
+    const response = unHandledExceptionResponse();
+    return res.status(response.status).json(response);
+  }
+};
+
 module.exports = {
   createUser,
+  getRoleFromLoggedUser,
 };

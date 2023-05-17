@@ -1,7 +1,11 @@
 const { Router } = require("express");
-const { createUser } = require("../../controller/user/user.controller");
+const {
+  createUser,
+  getRoleFromLoggedUser,
+} = require("../../controller/user/user.controller");
 const {
   checkUserSchemaValidators,
+  checkLoggedUserIsLibrarian,
 } = require("../../middleware/validators/user/user.validators");
 const {
   isUserAuthenticated,
@@ -11,9 +15,11 @@ const UserRouter = Router();
 
 UserRouter.post(
   "/",
-  [isUserAuthenticated, checkUserSchemaValidators],
+  [isUserAuthenticated, checkLoggedUserIsLibrarian, checkUserSchemaValidators],
   createUser
 );
+
+UserRouter.get("/role", [isUserAuthenticated], getRoleFromLoggedUser);
 
 module.exports = {
   UserRouter,

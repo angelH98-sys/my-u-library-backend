@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+
 const { dbConnection } = require("./database.config");
 const { UserRouter } = require("../router/user/user.router");
 
@@ -18,6 +20,7 @@ class ExpressServer {
 
   middlewares() {
     this.app.use(express.json());
+    this.app.use(cors());
   }
 
   routes() {
