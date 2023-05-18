@@ -132,6 +132,12 @@ const updateCheckout = async (req = request, res = response) => {
       checkingAt: new Date(),
     });
 
+    const bookToUpdate = await Book.findById(book);
+
+    bookToUpdate.stock += 1;
+
+    await bookToUpdate.save();
+
     const response = getRecordsResponse(checkout);
 
     return res.status(response.status).json(response);
