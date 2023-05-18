@@ -132,7 +132,7 @@ const updateCheckout = async (req = request, res = response) => {
       checkingAt: new Date(),
     });
 
-    const bookToUpdate = await Book.findById(book);
+    const bookToUpdate = await Book.findById(checkout.book);
 
     bookToUpdate.stock += 1;
 
