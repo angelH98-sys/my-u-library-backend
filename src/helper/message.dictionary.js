@@ -29,6 +29,11 @@ const MessageDictionary = {
     },
     UNHANDLED: "error.unhandled",
     UNAUTHORIZED: "error.unauthorized",
+    PARAM: {
+      ID: {
+        NOT_FOUND: "error.general.element.not_found",
+      },
+    },
   },
 };
 

@@ -65,10 +65,32 @@ const unauthorizedResponse = () => {
   return response;
 };
 
+const getParamIdNotFoundInModelReponse = () => {
+  const response = new MyULibraryResponse();
+
+  response.status = 400;
+
+  response.addError(SOURCE_LOCAL, ERROR.PARAM.ID.NOT_FOUND);
+
+  return response;
+};
+
+const getParamIdNotMongoIdResponse = () => {
+  const response = new MyULibraryResponse();
+
+  response.status = 400;
+
+  response.addError(SOURCE_LOCAL, ERROR.PARAM.ID.NOT_FOUND);
+
+  return response;
+};
+
 module.exports = {
   getSchemaErrorResponse,
   unHandledExceptionResponse,
   getRecordsResponse,
   getRecordsResponseWithMetadata,
+  getParamIdNotFoundInModelReponse,
+  getParamIdNotMongoIdResponse,
   unauthorizedResponse,
 };
