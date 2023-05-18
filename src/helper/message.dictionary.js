@@ -34,6 +34,13 @@ const MessageDictionary = {
         NOT_FOUND: "error.general.element.not_found",
       },
     },
+    CHECKOUT: {
+      BOOK_ID: {
+        INVALID: "error.checkout.book.invalid",
+        NOT_FOUND: "error.checkout.book.not_found",
+        OUT_OF_STOCK: "error.checkout.book.outOfStock",
+      },
+    },
   },
 };
 

@@ -6,6 +6,7 @@ const { UserRouter } = require("../router/user/user.router");
 const { BookRouter } = require("../router/book/book.router");
 const { AuthorRouter } = require("../router/author/author.router");
 const { GenreRouter } = require("../router/genre/genre.router");
+const { CheckoutRouter } = require("../router/checkout/checkout.router");
 
 class ExpressServer {
   constructor() {
@@ -31,6 +32,7 @@ class ExpressServer {
     this.app.use(process.env.PATH_BOOKS, BookRouter);
     this.app.use(process.env.PATH_AUTHORS, AuthorRouter);
     this.app.use(process.env.PATH_GENRES, GenreRouter);
+    this.app.use(process.env.PATH_CHECKOUTS, CheckoutRouter);
   }
 
   listen() {
